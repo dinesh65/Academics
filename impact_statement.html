@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinesh Kumar — Research Impact Statement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-2: #3f3f3b;
+    --ink-3: #7a7a74;
+    --rule: #d4d2cb;
+    --bg: #faf9f6;
+    --bg-2: #f1efea;
+    --accent: #1d4e3a;
+    --accent-light: #e1f5ee;
+    --accent-mid: #0f6e56;
+    --amber: #ba7517;
+    --amber-light: #faeeda;
+    --blue: #185fa5;
+    --blue-light: #e6f1fb;
+    --coral: #993c1d;
+    --coral-light: #faece7;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e6e0;
+      --ink-2: #c2c0b8;
+      --ink-3: #888780;
+      --rule: #3a3a36;
+      --bg: #181816;
+      --bg-2: #232320;
+      --accent: #5dcaa5;
+      --accent-light: #04342c;
+      --accent-mid: #9fe1cb;
+      --amber: #ef9f27;
+      --amber-light: #412402;
+      --blue: #85b7eb;
+      --blue-light: #042c53;
+      --coral: #f0997b;
+      --coral-light: #4a1b0c;
+    }
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* Header */
+  .page-header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .name {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+
+  .title-line {
+    font-size: 13px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.2rem;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 0.5px solid var(--rule);
+    color: var(--ink-2);
+    background: var(--bg-2);
+    white-space: nowrap;
+  }
+
+  .chip a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .chip.accent {
+    background: var(--accent-light);
+    border-color: var(--accent-mid);
+    color: var(--accent);
+  }
+
+  /* Section */
+  section {
+    margin-bottom: 2.8rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--rule);
+  }
+
+  /* Thesis statement */
+  .thesis {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--ink);
+    font-style: italic;
+    border-left: 2.5px solid var(--accent);
+    padding-left: 1.25rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .thesis em {
+    font-style: normal;
+    color: var(--accent-mid);
+  }
+
+  /* Body prose */
+  p {
+    color: var(--ink-2);
+    margin-bottom: 1rem;
+    font-size: 15px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* Research pillars grid */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 1.2rem;
+  }
+
+  .pillar {
+    background: var(--bg-2);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+
+  .pillar-icon {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+    color: var(--ink-3);
+  }
+
+  .pillar-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .pillar-desc {
+    font-size: 12.5px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  /* Publications */
+  .pub-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .pub-item {
+    border-left: 2px solid var(--rule);
+    padding-left: 1rem;
+    transition: border-color 0.15s;
+  }
+
+  .pub-item:hover { border-left-color: var(--accent); }
+
+  .pub-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .pub-meta {
+    font-size: 12.5px;
+    color: var(--ink-3);
+    margin-bottom: 0;
+  }
+
+  .pub-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 1px 8px;
+    border-radius: 100px;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-weight: 500;
+  }
+
+  .badge-published {
+    background: var(--accent-light);
+    color: var(--accent-mid);
+    border: 0.5px solid var(--accent-mid);
+  }
+
+  .badge-review {
+    background: var(--amber-light);
+    color: var(--amber);
+    border: 0.5px solid var(--amber);
+  }
+
+  .badge-preprint {
+    background: var(--blue-light);
+    color: var(--blue);
+    border: 0.5px solid var(--blue);
+  }
+
+  /* Impact metrics row */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .metric-card {
+    background: var(--bg-2);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    text-align: center;
+  }
+
+  .metric-number {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.1;
+    display: block;
+  }
+
+  .metric-label {
+    font-size: 11.5px;
+    color: var(--ink-3);
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* Teaching */
+  .teaching-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .teaching-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0.75rem 1rem;
+    background: var(--bg-2);
+    border-radius: 8px;
+    border: 0.5px solid var(--rule);
+  }
+
+  .teaching-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .teaching-text {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* Future work */
+  .future-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 1rem;
+  }
+
+  .future-card {
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    background: var(--bg);
+  }
+
+  .future-area {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .future-desc {
+    font-size: 12.5px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  /* Contact / footer */
+  .footer-bar {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .contact-link {
+    font-size: 13px;
+    color: var(--ink-3);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--rule);
+    padding-bottom: 1px;
+    transition: color 0.12s, border-color 0.12s;
+  }
+
+  .contact-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .updated {
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+
+  /* Utility */
+  strong { font-weight: 600; color: var(--ink); }
+  a { color: var(--accent-mid); }
+
+  @media (max-width: 540px) {
+    body { padding: 2rem 1.2rem 4rem; }
+    .name { font-size: 2rem; }
+    .pillars { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1 class="name">Dinesh Kumar</h1>
+  <p class="title-line">Applied Mathematician &nbsp;·&nbsp; PhD (IIT Guwahati) &nbsp;·&nbsp; Postdoc (IISc Bengaluru)</p>
+  <div class="meta-chips">
+    <span class="chip">Networked dynamical systems</span>
+    <span class="chip">Spectral graph theory</span>
+    <span class="chip">Mathematical ecology</span>
+    <span class="chip">Bioeconomic optimal control</span>
+    <span class="chip accent">Open to faculty &amp; postdoc positions</span>
+  </div>
+  <div class="meta-chips">
+    <span class="chip">📍 Jaipur, India</span>
+    <span class="chip">✉ dineshkumar.iitg@gmail.com</span>
+    <span class="chip"><a href="https://arxiv.org/search/?searchtype=author&query=Dinesh+Kumar" target="_blank">arXiv</a></span>
+    <span class="chip"><a href="https://scholar.google.com/citations?hl=en&view_op=list_works&authuser=4&gmla=ACrTK9X4HRu3mis88cMgY9UPYHkAQV13vBmTnT6jgbhEBlHru6-FHCEPHq0SNr-kynon-pr2TcNYehA3Udx7Z5ZiM2fB&user=fuoMsDUAAAAJ" target="_blank">Google Scholar</a></span>
+  </div>
+</header>
+
+<!-- Thesis -->
+<section>
+  <div class="section-label">Research identity</div>
+  <blockquote class="thesis">
+    I study how <em>network topology</em> governs the stability, persistence, and partitionability of dynamical systems — with applications ranging from spatial ecology and metapopulation management to general network science and graph algorithms.
+  </blockquote>
+  <p>
+    The central object in my research is the graph Laplacian — its spectrum, particularly the Fiedler value (algebraic connectivity), encodes surprisingly precise information about whether a networked system will persist, collapse, or admit a meaningful partition. My work translates this algebraic structure into actionable results: conditions under which ecological metapopulations survive habitat fragmentation, algorithms for fragmenting networks while preserving stability in each piece, and stability criteria for reaction-diffusion processes on heterogeneous graphs.
+  </p>
+</section>
+
+<!-- Research pillars -->
+<section>
+  <div class="section-label">Research pillars</div>
+  <div class="pillars">
+
+    <!-- Pillar 1: random graph SVG -->
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg width="48" height="38" viewBox="0 0 48 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <style>
+            .gn { fill: var(--accent-light); stroke: var(--accent-mid); stroke-width: 1.4; }
+            .ge { stroke: var(--ink-3); stroke-width: 1.1; }
+          </style>
+          <!-- edges -->
+          <line class="ge" x1="8" y1="10" x2="24" y2="6"/>
+          <line class="ge" x1="8" y1="10" x2="16" y2="28"/>
+          <line class="ge" x1="24" y1="6" x2="40" y2="14"/>
+          <line class="ge" x1="24" y1="6" x2="16" y2="28"/>
+          <line class="ge" x1="40" y1="14" x2="36" y2="30"/>
+          <line class="ge" x1="16" y1="28" x2="36" y2="30"/>
+          <line class="ge" x1="8" y1="10" x2="40" y2="14"/>
+          <!-- nodes -->
+          <circle class="gn" cx="8" cy="10" r="4"/>
+          <circle class="gn" cx="24" cy="6" r="4"/>
+          <circle class="gn" cx="40" cy="14" r="4"/>
+          <circle class="gn" cx="16" cy="28" r="4"/>
+          <circle class="gn" cx="36" cy="30" r="4"/>
+        </svg>
+      </div>
+      <div class="pillar-title">Networked dynamical systems</div>
+      <p class="pillar-desc">Stability and persistence of ecological and biological systems modelled on graphs; discrete reaction-diffusion dynamics; role of the Fiedler value in governing collective behaviour.</p>
+    </div>
+
+    <!-- Pillar 2: scissors cutting a dashed edge between two subgraphs -->
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg width="56" height="38" viewBox="0 0 56 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <style>
+            .gn2 { fill: var(--accent-light); stroke: var(--accent-mid); stroke-width: 1.4; }
+            .ge2 { stroke: var(--ink-3); stroke-width: 1.1; }
+            .cut { stroke: var(--coral); stroke-width: 1.3; stroke-dasharray: 3 2.5; }
+            .sc  { stroke: var(--ink-2); stroke-width: 1.5; stroke-linecap: round; fill: none; }
+          </style>
+          <!-- left subgraph -->
+          <line class="ge2" x1="5" y1="9"  x2="14" y2="22"/>
+          <line class="ge2" x1="5" y1="9"  x2="16" y2="6"/>
+          <line class="ge2" x1="16" y1="6" x2="14" y2="22"/>
+          <circle class="gn2" cx="5"  cy="9"  r="3.5"/>
+          <circle class="gn2" cx="16" cy="6"  r="3.5"/>
+          <circle class="gn2" cx="14" cy="22" r="3.5"/>
+          <!-- dashed cut edge -->
+          <line class="cut" x1="18" y1="14" x2="38" y2="14"/>
+          <!-- right subgraph -->
+          <line class="ge2" x1="40" y1="9"  x2="51" y2="9"/>
+          <line class="ge2" x1="40" y1="9"  x2="42" y2="24"/>
+          <line class="ge2" x1="51" y1="9"  x2="42" y2="24"/>
+          <circle class="gn2" cx="40" cy="9"  r="3.5"/>
+          <circle class="gn2" cx="51" cy="9"  r="3.5"/>
+          <circle class="gn2" cx="42" cy="24" r="3.5"/>
+          <!-- scissors at cut point -->
+          <!-- upper blade -->
+          <path class="sc" d="M26,10 Q28,14 26,18"/>
+          <line class="sc" x1="26" y1="10" x2="33" y2="7"/>
+          <!-- lower blade -->
+          <line class="sc" x1="26" y1="18" x2="33" y2="21"/>
+          <!-- pivot dot -->
+          <circle fill="var(--ink-2)" cx="26" cy="14" r="1.3"/>
+        </svg>
+      </div>
+      <div class="pillar-title">Graph partitioning with dynamics</div>
+      <p class="pillar-desc">Sustainable ecological partitioning of metapopulation networks; extension of NP-hard static graph partitioning to systems with node-level dynamics; computer algorithms verified on ecological benchmarks.</p>
+    </div>
+
+    <!-- Pillar 3: ecology -->
+    <div class="pillar">
+      <div class="pillar-icon" style="font-size:22px; margin-bottom:0.5rem;">🌿</div>
+      <div class="pillar-title">Mathematical ecology &amp; bioeconomics</div>
+      <p class="pillar-desc">Predator–prey systems under additional food provisioning; optimal harvesting control; population conservation and pest management; bioeconomic policy design with ecological integrity constraints.</p>
+    </div>
+
+    <!-- Pillar 4: pedagogy -->
+    <div class="pillar">
+      <div class="pillar-icon" style="font-size:22px; margin-bottom:0.5rem;">📐</div>
+      <div class="pillar-title">Mathematics education</div>
+      <p class="pillar-desc">Necessity-first pedagogy — formal structures introduced only after students feel the need for them. Curriculum development, discovery problem sets, and interdisciplinary projects at undergraduate level.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Selected publications -->
+<section>
+  <div class="section-label">Selected publications</div>
+  <ul class="pub-list">
+    <li class="pub-item">
+      <p class="pub-title">Stability of discrete reaction-diffusion networked dynamical systems <span class="pub-badge badge-preprint">arXiv preprint</span></p>
+      <p class="pub-meta">arXiv:2511.18798 — spectral conditions for stability in heterogeneous graph networks with node-level dynamics; new zero-mode invariance argument for homogeneous networks.</p>
+    </li>
+    <li class="pub-item">
+      <p class="pub-title">Ecological network stability and metapopulation partitioning <span class="pub-badge badge-review">Under review, JMB</span></p>
+      <p class="pub-meta"><em>Journal of Mathematical Biology</em> — submitted May 2026. Conditions under which partitioned subnetworks of a stable metapopulation network remain individually stable; graph Laplacian spectral characterisation.</p>
+    </li>
+    <li class="pub-item">
+      <p class="pub-title">Stable partitioning of ecological metapopulation networks <span class="pub-badge badge-published">Published</span></p>
+      <p class="pub-meta"><em>Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences</em> — foundational result on sustainable graph partitioning using spectral methods; applicable to static graph partitioning in computer science.</p>
+    </li>
+    <li class="pub-item">
+      <p class="pub-title">Additional food provisioning in predator–prey systems <span class="pub-badge badge-published">Published</span></p>
+      <p class="pub-meta"><em>Theoretical Population Biology</em> / <em>Nonlinear Dynamics</em> / <em>Ecological Complexity</em> — PhD work on dynamical control of predator–prey systems via supplemental feeding; applications to pest management, conservation, and optimal harvesting.</p>
+    </li>
+  </ul>
+</section>
+
+<!-- Metrics -->
+<section>
+  <div class="section-label">At a glance</div>
+  <div class="metrics">
+    <div class="metric-card">
+      <span class="metric-number">5+</span>
+      <span class="metric-label">Peer-reviewed publications</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number">3</span>
+      <span class="metric-label">High-impact journals (ProcRSocA, TPB, Nonlinear Dyn.)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number">10+</span>
+      <span class="metric-label">Years of university teaching</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number">2</span>
+      <span class="metric-label">MTech students guided (IISc)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number">5</span>
+      <span class="metric-label">Institutions: IIT-G · NIT-J · BML · IISc · NIIT-U</span>
+    </div>
+  </div>
+</section>
+
+<!-- Teaching -->
+<section>
+  <div class="section-label">Teaching philosophy &amp; practice</div>
+  <p>My pedagogy is built on a simple conviction: <strong>formal definitions should arrive only after students feel the need for them.</strong> I call this necessity-first (or frustration-first) teaching. The frustration is the lesson.</p>
+  <div class="teaching-items">
+    <div class="teaching-item">
+      <div class="teaching-dot"></div>
+      <p class="teaching-text"><strong>Discovery problem sets</strong> — students encounter the inadequacy of existing tools before the new concept is named; the definition then lands as relief, not imposition.</p>
+    </div>
+    <div class="teaching-item">
+      <div class="teaching-dot"></div>
+      <p class="teaching-text"><strong>Interdisciplinary projects</strong> — MAT 101 (Linear Algebra &amp; DEs) assignments integrated with data structures and algorithmic thinking; mathematics taught as a live tool, not a finished museum piece.</p>
+    </div>
+    <div class="teaching-item">
+      <div class="teaching-dot"></div>
+      <p class="teaching-text"><strong>Visualisation &amp; experimentation</strong> — GeoGebra, Desmos, flipped classroom, weekly short assessments, WhatsApp discussion groups for in-course Q&amp;A; tested across NIT Jalandhar, BML Munjal, and NIIT University.</p>
+    </div>
+    <div class="teaching-item">
+      <div class="teaching-dot"></div>
+      <p class="teaching-text"><strong>Mathematics Club</strong> — founded and ran a student outreach club at NIIT University focused on mathematical popularisation, problem culture, and science communication.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Future directions -->
+<section>
+  <div class="section-label">Research directions going forward</div>
+  <div class="future-grid">
+    <div class="future-card">
+      <p class="future-area">Spectral graph theory for heterogeneous networks</p>
+      <p class="future-desc">Extending stability and partitioning results beyond homogeneous-node assumptions; rigorous treatment of the heterogeneous discrete reaction-diffusion case.</p>
+    </div>
+    <div class="future-card">
+      <p class="future-area">Bioeconomic control under network constraints</p>
+      <p class="future-desc">Optimal harvesting and conservation policies for species embedded in spatial network structures; integration of economic constraints with ecological persistence conditions.</p>
+    </div>
+    <div class="future-card">
+      <p class="future-area">Algorithmic graph partitioning with dynamics</p>
+      <p class="future-desc">Efficient algorithms for the dynamical graph partitioning problem; connections to the classical NP-hard static case and applications in infrastructure network design.</p>
+    </div>
+    <div class="future-card">
+      <p class="future-area">Mathematics pedagogy research</p>
+      <p class="future-desc">Formalising necessity-first teaching through classroom studies; pedagogical manuscripts on complex differentiability and cone geometry aimed at <em>American Mathematical Monthly</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Collaborations -->
+<section>
+  <div class="section-label">Collaborations &amp; affiliations</div>
+  <p>
+    Active international collaborations include work with <strong>Prof. Ryusuke Kon</strong> (University of Miyazaki, Japan) on structured population and network models. Past collaborative ties at <strong>IISc Bengaluru</strong> (Dept. of Computational &amp; Data Sciences) with groups in dynamical systems and graph algorithms. Open to new collaborations in mathematical biology, network science, and applied spectral theory.
+  </p>
+</section>
+
+<footer class="footer-bar">
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:dineshkumar.iitg@gmail.com">dineshkumar.iitg@gmail.com</a>
+    <a class="contact-link" href="https://arxiv.org/search/?searchtype=author&query=Dinesh+Kumar" target="_blank">arXiv</a>
+    <a class="contact-link" href="https://scholar.google.com/citations?hl=en&view_op=list_works&authuser=4&gmla=ACrTK9X4HRu3mis88cMgY9UPYHkAQV13vBmTnT6jgbhEBlHru6-FHCEPHq0SNr-kynon-pr2TcNYehA3Udx7Z5ZiM2fB&user=fuoMsDUAAAAJ" target="_blank">Google Scholar</a>
+    <a class="contact-link" href="#">CV (PDF)</a>
+  </div>
+  <span class="updated">Updated June 2026</span>
+</footer>
+
+</body>
+</html>
