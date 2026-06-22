@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Visible Cone to Invisible Cone | Dinesh Kumar</title>
+<style>
+  :root {
+    --ink:       #1a1917;
+    --ink2:      #4a4845;
+    --ink3:      #7a7874;
+    --paper:     #faf9f6;
+    --surface:   #f2f0eb;
+    --accent:    #1a5fa8;
+    --accent2:   #0f6e56;
+    --warm:      #b85c1a;
+    --rule:      #d8d5cc;
+    --serif:     'Georgia', 'Times New Roman', serif;
+    --sans:      'Helvetica Neue', 'Arial', sans-serif;
+    --mono:      'Courier New', monospace;
+    --maxw:      680px;
+    --wide:      820px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 18px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.78;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+  .wide      { max-width: var(--wide);  margin: 0 auto; padding: 0 1.5rem; }
+
+  .site-header {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.2rem 0;
+  }
+  .site-header .container {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .site-name {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    text-decoration: none;
+  }
+  .site-nav a {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--ink3);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+  .site-nav a:hover { color: var(--accent); }
+
+  .hero {
+    padding: 5rem 0 3.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-label {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    max-width: 560px;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    line-height: 1.65;
+    max-width: 520px;
+    margin-bottom: 2rem;
+  }
+  .hero-meta {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--ink3);
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .article-body { padding: 3.5rem 0 5rem; }
+  p { margin-bottom: 1.4rem; }
+  p:last-child { margin-bottom: 0; }
+
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 3.5rem 0 1.1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--ink);
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink2);
+    margin: 2.5rem 0 0.9rem;
+  }
+
+  .pull {
+    margin: 2.8rem 0;
+    padding: 1.6rem 2rem 1.6rem 1.8rem;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 6px 6px 0;
+  }
+  .pull p {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: var(--ink);
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .aha {
+    margin: 2.8rem 0;
+    padding: 1.5rem 1.8rem;
+    background: #eef6ee;
+    border: 1px solid #b8dbb8;
+    border-radius: 8px;
+  }
+  .aha-label {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.6rem;
+  }
+  .aha p {
+    font-size: 0.95rem;
+    color: #1a3d1a;
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+
+  /* ── Math Display ── */
+  .math-block {
+    margin: 1.8rem 0;
+    padding: 1.2rem 1.6rem;
+    background: var(--surface);
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  .math-block table { border-collapse: collapse; width: 100%; }
+  .math-block td {
+    font-size: 0.95rem;
+    color: var(--ink);
+    padding: 0.25rem 0;
+    white-space: nowrap;
+  }
+  .math-block td.label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--ink3);
+    padding-left: 1.5rem;
+    white-space: normal;
+    width: 45%;
+  }
+  .mi {
+    font-style: italic;
+    letter-spacing: 0.01em;
+  }
+  .mi sub, sub.mi {
+    font-style: italic;
+    font-size: 0.72em;
+  }
+  .frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 0.82em;
+    line-height: 1.15;
+    margin: 0 0.15em;
+  }
+  .frac .num { border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  .frac .den { padding-top: 1px; }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--rule);
+  }
+  .divider span {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    color: var(--ink3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* References */
+  .references {
+    font-size: 0.84rem;
+    color: var(--ink2);
+    border-top: 1px solid var(--rule);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    line-height: 1.65;
+  }
+  .references h2 {
+    font-size: 1rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+  .references ol {
+    padding-left: 1.4rem;
+  }
+  .references li {
+    margin-bottom: 0.55rem;
+  }
+  .cite-ref {
+    font-family: var(--sans);
+    font-size: 0.72em;
+    color: var(--accent);
+    text-decoration: none;
+    vertical-align: super;
+    margin-left: 0.05em;
+  }
+  .cite-ref:hover { color: var(--warm); }
+  .ref-anchor { scroll-margin-top: 2rem; }
+
+  /* Footnotes (asides, distinct from numbered bibliographic citations) */
+  .footnote-ref {
+    font-family: var(--sans);
+    font-size: 0.85em;
+    color: var(--ink2);
+    text-decoration: none;
+    vertical-align: super;
+    margin-left: 0.05em;
+  }
+  .footnote-ref:hover { color: var(--warm); }
+  .footnotes {
+    font-size: 0.84rem;
+    color: var(--ink2);
+    border-top: 1px solid var(--rule);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    line-height: 1.65;
+  }
+  .footnotes h2 {
+    font-size: 1rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+  .footnotes ol {
+    list-style: none;
+    padding-left: 1.6rem;
+  }
+  .footnotes li {
+    margin-bottom: 0.65rem;
+    position: relative;
+  }
+  .footnote-marker {
+    position: absolute;
+    left: -1.6rem;
+    width: 1.3rem;
+    font-family: var(--sans);
+    color: var(--ink3);
+    text-align: right;
+  }
+  .footnote-back {
+    font-family: var(--sans);
+    text-decoration: none;
+    color: var(--accent);
+    margin-left: 0.4em;
+  }
+  .footnote-back:hover { color: var(--warm); }
+  .fn-anchor { scroll-margin-top: 2rem; }
+
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 2.5rem 0;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--ink3);
+  }
+  .site-footer .container {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .dropcap::first-letter {
+    float: left;
+    font-size: 3.8rem;
+    line-height: 0.82;
+    margin: 0.08em 0.12em 0 0;
+    color: var(--accent);
+    font-family: var(--serif);
+  }
+  .cone-figure { margin: 2.5rem 0; text-align: center; }
+  .cone-figure figcaption {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--ink3);
+    margin-top: 0.8rem;
+    font-style: italic;
+  }
+
+  /* ── Application cards ── */
+  .app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.8rem 0 2.4rem;
+  }
+  @media(max-width:600px){ .app-grid { grid-template-columns: 1fr; } }
+  .app-card {
+    padding: 1.1rem 1.3rem;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--warm);
+  }
+  .app-card-title {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--warm);
+    margin-bottom: 0.4rem;
+  }
+  .app-card p {
+    font-size: 0.85rem;
+    color: var(--ink2);
+    margin-bottom: 0;
+    line-height: 1.65;
+  }
+
+  /* ── Greek method visuals ── */
+  .greek-figure {
+    margin: 2rem 0 0.5rem;
+    text-align: center;
+  }
+  .greek-figure figcaption {
+    font-family: var(--sans);
+    font-size: 0.76rem;
+    color: var(--ink3);
+    margin-top: 0.7rem;
+    font-style: italic;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+  .greek-figure svg { max-width: 100%; }
+
+  /* ── Share bar ── */
+  .share-bar {
+    margin: 2.2rem 0 0;
+    padding: 1.2rem 1.5rem;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .share-bar-label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-right: 0.2rem;
+    flex-shrink: 0;
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    padding: 0.42rem 0.9rem;
+    border-radius: 5px;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+  }
+  .share-btn:hover { opacity: 0.82; color: inherit; }
+  .share-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .share-btn.twitter  { background: #000;    color: #fff; }
+  .share-btn.linkedin { background: #0a66c2; color: #fff; }
+  .share-btn.whatsapp { background: #25d366; color: #fff; }
+  .share-btn.email    { background: var(--ink2); color: #fff; }
+
+  /* ── Author bio ── */
+  .author-bio {
+    margin: 3rem 0;
+    padding: 1.8rem 2rem;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    display: flex;
+    gap: 1.3rem;
+    align-items: flex-start;
+  }
+  .author-bio-initial {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--accent);
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .author-bio-label {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 0.5rem;
+  }
+  .author-bio p {
+    font-size: 0.92rem;
+    color: var(--ink2);
+    margin-bottom: 0;
+    line-height: 1.68;
+  }
+
+  @media(max-width: 640px) {
+    html { font-size: 16px; }
+    h2   { font-size: 1.25rem; }
+    .hero h1 { font-size: 1.9rem; }
+    .author-bio { flex-direction: column; }
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--warm); }
+
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 999;
+    transition: width 0.1s linear;
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="site-header">
+  <div class="container">
+    <a href="#" class="site-name">Dinesh Kumar</a>
+    <nav class="site-nav">
+      <a href="#">Research</a>
+      <a href="#">Teaching</a>
+      <a href="#">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">Mathematics · Pedagogy · Cosmos</div>
+    <h1>From Visible Cone<br>to Invisible Cone</h1>
+    <p class="hero-sub">
+      One folded sheet of paper, and a shape that quietly 
+      measures what we cannot reach.
+    </p>
+    <div class="hero-meta">
+      <span>Dinesh Kumar</span>
+      <span>·</span>
+      <span>June 2026</span>
+      <span>·</span>
+      <span>20 min read</span>
+    </div>
+  </div>
+</section>
+
+<article class="article-body">
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  OPENING                                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<p class="dropcap">
+I was sitting at my study desk one evening, preparing to teach the lateral surface area 
+of a cone to a class of 9th-grade students the next morning. I knew the formula — 
+<span class="mi">πrl</span> — and I had the textbook diagram. But I did not 
+really understand it. Not the formula. The <em>thing</em> the formula was talking about.
+</p>
+
+<p>
+So I did what any mathematician should do more often: I picked up a piece of paper, 
+cut out a sector, curled it, and taped the edges. A cone appeared in my hands.
+</p>
+
+<p>
+What happened next took about forty minutes and quietly connected me to roughly 
+two thousand years of human thought.
+</p>
+
+<div class="pull">
+  <p>
+    A cone is one of the most generative objects in mathematics. 
+    Not because it is complicated, but because it is the right shape 
+    to encode many things — and to hide them just well enough 
+    that finding them feels like genuine discovery.
+  </p>
+</div>
+
+<p>
+This is the story of what I found that evening. I will try to write it the way 
+I experienced it — one surprise at a time — until the small paper model on my desk 
+reaches all the way to the large-scale structure of the cosmos.
+</p>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  SECTION I                                             -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2>I. The Paper Cone and Its Four Secrets</h2>
+
+<p>
+I took a circular disc of paper and cut out a sector — a wedge-shaped piece, the way you might cut a slice from a pie. I curled the remaining piece until its two straight edges met. A cone appeared. 
+</p>
+
+<div class="aha">
+  <div class="aha-label">Aha moment · 1</div>
+  <p>
+    A cone is born from a circular sector. The straight edges of the sector become 
+    the slant edge. The arc of the sector becomes the base circle. The cone is a 
+    rolled-up sector — and understanding the cone is the same as understanding 
+    what happens when you roll up part of a circle. Most students 
+    never see this. They are given the formula and asked to use it.
+  </p>
+</div>
+
+<p>
+I looked at the leftover wedge I had set aside. On a quiet impulse, I curled that too. 
+It also became a cone — steeper, with a smaller base circle.
+</p>
+
+<div class="aha">
+  <div class="aha-label">Aha moment · 2</div>
+  <p>
+    Two cones from one disc. They are complementary: the wider sector makes a wider, 
+    flatter cone; the narrower wedge makes a taller, narrower one. The full disc is 
+    shared between them, and each remembers exactly which part of the disc it came from.
+  </p>
+</div>
+
+<p>
+Now I held the two cones side by side and noticed something the textbook had never 
+made visible. The base radius <span class="mi">r</span> was not something I had chosen independently — 
+it was <em>determined</em> by which sector I had used. The cone was keeping a record 
+of its own origin.
+</p>
+
+<div class="aha">
+  <div class="aha-label">Aha moment · 3</div>
+  <p>
+    The base radius <em>r</em> is not a free parameter. Once you fix the slant height 
+    <em>l</em> (the radius of the original disc) and the sector angle θ, the base radius 
+    is completely determined. There is no freedom left. The cone encodes its own history 
+    in its proportions.
+  </p>
+</div>
+
+<p>
+The fourth realisation came when I thought about area. The sector of the original disc, 
+when curled into a cone, does not change its area — it is the same piece of paper. 
+So the lateral surface area of the cone equals the area of the sector. 
+A sector of angle θ (out of 360°) from a disc of radius <span class="mi">l</span> has area:
+</p>
+
+<div class="math-block">
+  <table>
+    <tr>
+      <td>Sector area &nbsp;=&nbsp; <span class="frac"><span class="num">θ</span><span class="den">360°</span></span> · π<span class="mi">l</span>²</td>
+      <td class="label">fraction of full disc × disc area</td>
+    </tr>
+    <tr>
+      <td>Arc length &nbsp;=&nbsp; <span class="frac"><span class="num">θ</span><span class="den">360°</span></span> · 2π<span class="mi">l</span></td>
+      <td class="label">this arc becomes the base circle</td>
+    </tr>
+    <tr>
+      <td>So: &nbsp;<span class="frac"><span class="num">θ</span><span class="den">360°</span></span> · 2π<span class="mi">l</span> = 2π<span class="mi">r</span></td>
+      <td class="label">arc length = base circumference</td>
+    </tr>
+    <tr>
+      <td>⟹ &nbsp;<span class="frac"><span class="num">θ</span><span class="den">360°</span></span> = <span class="frac"><span class="num"><span class="mi">r</span></span><span class="den"><span class="mi">l</span></span></span></td>
+      <td class="label">the key ratio</td>
+    </tr>
+    <tr>
+      <td>⟹ &nbsp;Lateral area = <span class="frac"><span class="num"><span class="mi">r</span></span><span class="den"><span class="mi">l</span></span></span> · π<span class="mi">l</span>² = <strong>π<span class="mi">rl</span></strong></td>
+      <td class="label">the formula, derived from first principles</td>
+    </tr>
+  </table>
+</div>
+
+<div class="aha">
+  <div class="aha-label">Aha moment · 4</div>
+  <p>
+    The formula π<em>rl</em> is not a definition to memorize. It is a natural consequence of the geometry of 
+    unrolling. The practical reason to use it — rather than the sector form — is 
+    that <em>r</em> and <em>l</em> can both be measured directly on a finished cone, whereas the sector angle θ cannot. 
+    Once the paper is curled, θ hides inside the shape. 
+    The formula is better because it uses what the object is willing to show you.
+  </p>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  SECTION II                                            -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2>II. The Cone Remembers Its Past</h2>
+
+<p>
+The sector angle θ is now hidden inside the cone. Once the paper is curled and taped, you cannot see it or measure it directly with a protractor without unfolding everything again.
+</p>
+
+<p>
+Yet the simple relationship we discovered earlier — 
+<span class="frac"><span class="num">θ</span><span class="den">360°</span></span> = <span class="frac"><span class="num"><span class="mi">r</span></span><span class="den"><span class="mi">l</span></span></span> — 
+still allows us to recover θ using only two measurements we can make from the outside: the base radius <span class="mi">r</span> and the slant height <span class="mi">l</span>.
+</p>
+
+<p>
+It feels natural to express this in radians. A full circle is 360°, and the same full turn measured in radians is 2π. Replacing 360° with 2π in the earlier equation gives us:
+</p>
+
+<div class="math-block">
+  <table>
+    <tr>
+      <td><span class="frac"><span class="num">θ</span><span class="den">360°</span></span> = <span class="frac"><span class="num"><span class="mi">r</span></span><span class="den"><span class="mi">l</span></span></span></td>
+      <td class="label">the key ratio from Section I</td>
+    </tr>
+    <tr>
+      <td>⟹ &nbsp;<span class="frac"><span class="num">θ (rad)</span><span class="den">2π</span></span> = <span class="frac"><span class="num"><span class="mi">r</span></span><span class="den"><span class="mi">l</span></span></span></td>
+      <td class="label">replacing 360° by 2π</td>
+    </tr>
+    <tr>
+      <td>⟹ &nbsp;θ = <span class="frac"><span class="num">2π<span class="mi">r</span></span><span class="den"><span class="mi">l</span></span></span></td>
+      <td class="label">the sector angle in radians</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+Visualising it brings a quiet thrill: when the cone is standing in front of you, its base circumference (2πr) divided by the slant height (l) directly gives the sector angle θ in radians. The three-dimensional cone quietly hands back the two-dimensional angle that was lost when the paper was curled. This is not a new discovery — it is the very definition of a radian, playing out beautifully on the physical object we just made.
+</p>
+
+<p>
+The angle that disappeared when I curled the paper can be recovered from two simple measurements made on the outside of the finished cone — without ever looking inside.
+</p>
+
+<p>
+There is also a clean geometric view. Slice the cone through its apex and axis, and you get a flat triangle with apex angle 2α, plainly visible with nothing more than a protractor. Then, from the right triangle formed by the axis, radius, and slant height:
+</p>
+
+<div class="math-block">
+  <table>
+    <tr>
+      <td>sin α = <span class="frac"><span class="num"><span class="mi">r</span></span><span class="den"><span class="mi">l</span></span></span></td>
+      <td class="label">the apex half-angle of the cone</td>
+    </tr>
+    <tr>
+      <td>⟹ &nbsp;θ = 2π · sin α &nbsp; (in radians)</td>
+      <td class="label">sector angle is 2π times the sine of the apex half-angle</td>
+    </tr>
+  </table>
+</div>
+
+<div class="pull">
+  <p>
+    A hidden quantity recovered from accessible surface measurements through a known relationship — and the same hidden angle has more than one way back into view.
+  </p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  SECTION III                                           -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2>III. The Invisible Cone — How We See the World</h2>
+
+<p>
+When you look at an object — a tree, a star, the Moon — light rays travel from every point on the object to your eye. All those rays together form a cone in space, with you at the apex and the object at the base. This cone is completely invisible. There is no paper, no tape. Yet it obeys exactly the same geometry as the one I made on my desk.
+</p>
+
+<!-- ── INVISIBLE CONE FIGURE ── -->
+<figure class="cone-figure" id="fig-cone-vision">
+<svg width="100%" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     aria-labelledby="cone-vision-title cone-vision-desc">
+  <title id="cone-vision-title">Diagram of the invisible cone of sight</title>
+  <desc id="cone-vision-desc">Observer at the left apex O. Two slant rays extend to an object at the right. A dashed axis runs between them. An arc at the apex marks the half-angle α. Labels show slant height l along a ray and object half-size r as the perpendicular half-width of the object.</desc>
+  <!-- Observer -->
+  <circle cx="50" cy="100" r="7" fill="#1a5fa8"/>
+  <text x="50" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#4a4845">observer (O)</text>
+  <!-- Dashed axis (centreline) -->
+  <line x1="57" y1="100" x2="496" y2="100" stroke="#b0aea6" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Slant rays -->
+  <line x1="50" y1="100" x2="500" y2="40" stroke="#1a5fa8" stroke-width="1.4"/>
+  <line x1="50" y1="100" x2="500" y2="160" stroke="#1a5fa8" stroke-width="1.4"/>
+  <!-- Object segment -->
+  <line x1="500" y1="40" x2="500" y2="160" stroke="#0f6e56" stroke-width="2.5"/>
+  <circle cx="500" cy="100" r="4" fill="#0f6e56"/>
+  <text x="514" y="97" font-family="Georgia,serif" font-size="12" fill="#0f6e56">object</text>
+  <!-- r label: perpendicular half-width -->
+  <line x1="504" y1="100" x2="504" y2="40" stroke="#0f6e56" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="516" y="74" font-family="Georgia,serif" font-size="12" fill="#0f6e56" font-style="italic">r</text>
+  <!-- l: label on upper slant ray -->
+  <text x="255" y="58" font-family="Georgia,serif" font-size="12" fill="#b85c1a" font-style="italic">l (slant distance)</text>
+  <!-- Arc for α -->
+  <path d="M 140,100 A 90,90 0 0,0 139.2134,88.1049"
+        fill="none" stroke="#b85c1a" stroke-width="1.5"/>
+  <text x="148" y="97" font-family="Georgia,serif" font-size="13" fill="#b85c1a" font-style="italic">α</text>
+</svg>
+<figcaption id="cone-vision-caption">
+  The invisible cone of sight: the observer is at the apex O. The object has physical half-width <em>r</em> (measured perpendicular to the line of sight) and is at slant distance <em>l</em> along the ray from O. The apex half-angle α satisfies sin α = <em>r</em>/<em>l</em>, and is the angle that the object <em>subtends</em> at the observer's eye.
+</figcaption>
+</figure>
+
+<p>
+For this invisible cone the same relationship holds: 
+sin α = <span class="mi">r</span>/<span class="mi">l</span>.
+What the eye (or a telescope) directly registers is the angle α — how wide the object appears from where we stand. 
+What we usually want to know, but cannot measure by simply looking, are the object's actual physical size <em>r</em> and its distance <em>l</em>. 
+The cone formula connects all three: knowing any two gives you the third.
+</p>
+
+<p>
+Now ask: what happens as the object moves farther away? As it recedes, the slant distance <span class="mi">l</span> and the straight-line distance <span class="mi">d</span> become almost the same. The cone becomes sharper and α approaches zero. For small angles (in radians), sin α ≈ α itself, so the formula simplifies beautifully:
+</p>
+
+<div class="math-block">
+  <table>
+    <tr>
+      <td>α ≈ <span class="frac"><span class="num"><span class="mi">r</span></span><span class="den"><span class="mi">d</span></span></span></td>
+      <td class="label">the small-angle formula; α in radians, valid when α ≪ 1</td>
+    </tr>
+  </table>
+</div>
+
+<div class="aha">
+  <div class="aha-label">Aha moment · 5</div>
+  <p>
+    When the object is far away, α becomes tiny. For such small angles in radians, sin α, tan α, and α itself are all practically equal. 
+    This is the small-angle formula: <strong>α ≈ <em>r</em>/<em>d</em></strong>. 
+    It is the geometric backbone of all astronomical measurement — every telescope observation, every stellar radius, every distance we calculate in the sky comes through this relationship. 
+    It all begins from asking what happens when our paper cone becomes a needle.
+  </p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  SECTION IV                                            -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2>IV. The Greeks Already Knew — They Just Used Shadows</h2>
+
+<p>
+The invisible cone of sight is ancient. Greek mathematicians used cone geometry 
+to measure things no one had ever reached, using nothing more sophisticated 
+than sticks, shadows, and ingenuity. What makes their work remarkable is not just 
+the answers they obtained, but the <em>structure</em> of their reasoning: 
+each one identified a hidden quantity, found accessible measurements, 
+and used a geometric relationship.
+</p>
+
+<!-- ── ERATOSTHENES ── -->
+<h3>Eratosthenes and the Earth (≈ 240 BC)</h3>
+
+<p>
+On the summer solstice, the Sun was directly overhead at Syene (modern Aswan): no shadow at noon, and the Sun's reflection visible at the bottom of a deep well. On the same day in Alexandria, a vertical gnomon cast a shadow corresponding to an angle of 7.2° — exactly one-fiftieth of a full circle. If the Sun's rays arrive parallel (they very nearly do, given the enormous distance of the Sun), that angle equals the central angle subtended by the arc between the two cities.<a href="#fn-1" id="fnref-1" class="footnote-ref">*</a>
+</p>
+
+<!-- ── ERATOSTHENES FIGURE (CORRECTED) ── -->
+<!--
+  Geometry (all coordinates in SVG space):
+  Earth centre C = (300, 185), radius = 115px  (viewBox 580 × 310)
+  Syene: top of circle  →  (300, 70)
+  Alexandria: 40° arc counterclockwise from top (exaggerated for clarity, labeled 7.2°)
+    x = 300 − 115·sin40° = 300 − 73.9 = 226.1  ≈ 226
+    y = 185 − 115·cos40° = 185 − 88.1  = 96.9   ≈ 97
+  Gnomon at Alexandria: along the outward radius direction from C
+    direction unit vec = ((226−300)/115, (97−185)/115) = (−0.6434, −0.7660)
+    gnomon length 38px → tip at (226 − 24.4, 97 − 29.1) = (201.6, 67.9) ≈ (202, 68)
+  Sun ray at Alexandria: straight down (vertical) — parallel to Syene ray
+  Shadow angle (labeled 7.2°): between upward gnomon and upward sun ray, at gnomon base
+    Arc from "directly up" to "gnomon outward direction", at gnomon base
+  Central angle at C (labeled 7.2°): between C→Syene (upward) and C→Alexandria
+    Arc from (300,150) to (278,158) at radius 35px from C
+-->
+<figure class="greek-figure" id="fig-eratosthenes">
+<svg width="100%" viewBox="0 0 580 310" xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-labelledby="erat-title erat-desc">
+  <title id="erat-title">Eratosthenes' method for measuring Earth's circumference</title>
+  <desc id="erat-desc">A circle representing the Earth with centre C. Parallel sun rays arrive vertically. At Syene (top), a ray goes straight down with no shadow. At Alexandria (upper-left arc), a gnomon perpendicular to the Earth's surface makes a 7.2° angle with the vertical sun ray — the same 7.2° as the central angle at C between the two cities.</desc>
+
+  <!-- ── Earth ── -->
+  <circle cx="300" cy="185" r="115" fill="#e8f0ea" stroke="#4a7a55" stroke-width="1.5"/>
+  <text x="300" y="190" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a7a55" font-style="italic">Earth</text>
+  <circle cx="300" cy="185" r="3" fill="#4a4845"/>
+  <text x="310" y="188" font-family="sans-serif" font-size="11" fill="#4a4845" font-style="italic">C</text>
+
+  <!-- ── Sun rays (parallel, vertical) ── -->
+  <!-- Ray at Syene -->
+  <line x1="300" y1="5"  x2="300" y2="70"  stroke="#e8a020" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <!-- Ray at Alexandria -->
+  <line x1="226" y1="5"  x2="226" y2="97"  stroke="#e8a020" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <!-- Ray further right for visual balance -->
+  <line x1="370" y1="5"  x2="370" y2="42"  stroke="#e8a020" stroke-width="1.2" stroke-dasharray="5,3" opacity="0.4"/>
+
+  <!-- Sun label -->
+  <text x="408" y="22" font-family="sans-serif" font-size="11" fill="#e8a020" font-weight="600">Sun rays (parallel)</text>
+  <!-- Arrow pointing to rays -->
+  <line x1="405" y1="24" x2="375" y2="30" stroke="#e8a020" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+  <!-- ── Syene ── -->
+  <circle cx="300" cy="70" r="4.5" fill="#b85c1a"/>
+  <text x="308" y="66" font-family="sans-serif" font-size="11" fill="#b85c1a" font-weight="600">Syene</text>
+  <!-- No-shadow indicator: small tick marks either side -->
+  <text x="270" y="60" font-family="sans-serif" font-size="9" fill="#b85c1a" font-style="italic">(no shadow)</text>
+
+  <!-- Radius line C → Syene (dashed) -->
+  <line x1="300" y1="185" x2="300" y2="70" stroke="#1a5fa8" stroke-width="1" stroke-dasharray="4,2" opacity="0.6"/>
+
+  <!-- ── Alexandria ── -->
+  <!-- Position: (226, 97) -->
+  <circle cx="226" cy="97" r="4.5" fill="#1a5fa8"/>
+  <text x="108" y="93" font-family="sans-serif" font-size="11" fill="#1a5fa8" font-weight="600">Alexandria</text>
+
+  <!-- Radius line C → Alexandria (dashed) -->
+  <line x1="300" y1="185" x2="226" y2="97" stroke="#1a5fa8" stroke-width="1" stroke-dasharray="4,2" opacity="0.6"/>
+
+  <!-- ── Gnomon at Alexandria ──
+       Outward unit vector: (−0.6434, −0.7660)
+       Gnomon base: (226, 97), length 38px
+       Tip: (226 − 0.6434×38, 97 − 0.7660×38) = (201.6, 67.9) → (202, 68)
+  -->
+  <line x1="226" y1="97" x2="202" y2="68" stroke="#1a5fa8" stroke-width="2.8"/>
+  <!-- Small circle at gnomon base -->
+  <!-- Gnomon label -->
+  <text x="182" y="63" font-family="sans-serif" font-size="10" fill="#1a5fa8" font-style="italic">gnomon</text>
+
+  <!-- ── Shadow angle at Alexandria ──
+       Between:
+         (A) the vertical upward direction (sun ray = straight up on screen)
+         (B) the gnomon outward direction (−0.6434, −0.7660) = upper-left
+       
+       We draw an arc at gnomon base (226, 97), radius 24px,
+       FROM the "directly up" point (226, 73) 
+       TO the "gnomon direction" point (226 − 0.6434×24, 97 − 0.7660×24) = (210.6, 78.6)
+       
+       SVG arc: large-arc-flag=0, sweep-flag=0 (counterclockwise from up to gnomon dir)
+  -->
+  <!-- Vertical reference line (upward extension of sun ray at gnomon base) -->
+  <line x1="226" y1="97" x2="226" y2="66" stroke="#e8a020" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.7"/>
+
+  <!-- Arc from vertical-up to gnomon direction, at gnomon base, r=24 -->
+  <!-- Start point (directly up from gnomon base): (226, 97−24) = (226, 73) -->
+  <!-- End point (along gnomon direction): (226−0.6434×24, 97−0.7660×24) = (210.6, 78.6) -->
+  <path d="M 226,73 A 24,24 0 0,0 210.6,78.6"
+        fill="none" stroke="#b85c1a" stroke-width="1.8"/>
+  <!-- 7.2° label near arc midpoint: roughly (215, 68) -->
+  <text x="194" y="75" font-family="Georgia,serif" font-size="12" fill="#b85c1a" font-style="italic" font-weight="600">7.2°</text>
+
+  <!-- ── Arc along Earth surface between the two cities ── -->
+  <!-- From Syene (300,70) counterclockwise to Alexandria (226,97), radius 115 from C(300,185) -->
+  <path d="M 300,70 A 115,115 0 0,0 226,97"
+        fill="none" stroke="#4a7a55" stroke-width="3"/>
+  <!-- 800 km label on the arc -->
+  <text x="248" y="68" font-family="sans-serif" font-size="10" fill="#4a7a55" font-weight="600">800 km</text>
+
+  <!-- ── Central angle at C ──
+       Between C→Syene (directly up) and C→Alexandria (upper-left 40°)
+       Arc at C(300,185), radius 35px
+       Start: directly up → (300, 185−35) = (300, 150)
+       End: gnomon direction → (300−0.6434×35, 185−0.7660×35) = (277.5, 158.2)
+  -->
+  <path d="M 300,150 A 35,35 0 0,0 277.5,158.2"
+        fill="none" stroke="#b85c1a" stroke-width="1.8"/>
+  <!-- Label -->
+  <text x="273" y="148" font-family="Georgia,serif" font-size="12" fill="#b85c1a" font-style="italic" font-weight="600">7.2°</text>
+
+  <!-- ── Annotation: equal angles ── -->
+  <text x="370" y="240" font-family="sans-serif" font-size="10" fill="#b85c1a">Shadow angle at Alexandria</text>
+  <text x="370" y="254" font-family="sans-serif" font-size="10" fill="#b85c1a">= Central angle at C</text>
+  <text x="370" y="268" font-family="sans-serif" font-size="10" fill="#7a7874" font-style="italic">(parallel rays → alternate interior angles)</text>
+  <!-- Connector lines to both angles -->
+  <line x1="368" y1="247" x2="218" y2="79" stroke="#b85c1a" stroke-width="0.7" stroke-dasharray="3,2" opacity="0.6"/>
+  <line x1="368" y1="247" x2="290" y2="155" stroke="#b85c1a" stroke-width="0.7" stroke-dasharray="3,2" opacity="0.6"/>
+</svg>
+<figcaption id="erat-caption">
+  Eratosthenes' measurement (≈ 240 BC). Parallel sun rays cast no shadow at Syene (directly overhead) 
+  but make an angle of 7.2° with the gnomon at Alexandria. The gnomon is perpendicular to Earth's surface — 
+  it points along the radius from Earth's centre. The line through that radius acts as a transversal 
+  cutting the two parallel sun rays, so the shadow angle at Alexandria and the central angle at C 
+  are <em>alternate interior angles</em> — hence equal. 
+  One-fiftieth of a circle × 800 km = 40,000 km (modern value: 40,075 km).
+</figcaption>
+</figure>
+
+<div class="math-block">
+  <table>
+    <tr>
+      <td>7.2° = <span class="frac"><span class="num">1</span><span class="den">50</span></span> × 360°</td>
+      <td class="label">fraction of full circle subtended at Earth's centre</td>
+    </tr>
+    <tr>
+      <td>Circumference = 50 × 800 km = <strong>40,000 km</strong></td>
+      <td class="label">modern value: 40,075 km</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+One shadow. One angle. One already-known distance. The circumference of the Earth, 
+recovered from accessible measurements through a geometric relationship. The angle, at least, 
+needed nothing beyond a stick and a city Eratosthenes never had to leave.<a href="#fn-2" id="fnref-2" class="footnote-ref">†</a>
+</p>
+
+<p>
+The cone implicit in Eratosthenes' reasoning: the Sun's rays form a cone whose apex 
+is at the Sun and whose axis passes through the Earth's centre. 
+Eratosthenes was reading the half-angle of that cone from a shadow cast on the ground.
+</p>
+
+<!-- ── ARISTARCHUS ── -->
+<h3>Aristarchus and the Moon (≈ 270 BC)</h3>
+
+<p>
+During a lunar eclipse, the Earth blocks the Sun's light, casting a conical shadow — 
+the umbra — behind it into space. That shadow is genuinely cone-shaped, tapering from 
+Earth's width down to a point far behind it. The Moon, as it crosses through this shadow, 
+spends a measurable amount of time inside it. By comparing that crossing time 
+to the Moon's own apparent diameter in the sky, Aristarchus could infer 
+how wide the shadow was at the Moon's distance — and from that, 
+how far away the Moon was. The shadow he reasoned about was a real, physical cone of darkness; 
+the geometry he actually wrote down, in his surviving treatise<a href="#ref-3" class="cite-ref">[3]</a>, worked with its flat 
+cross-section — circles and similar triangles in the eclipse plane.
+</p>
+
+<!-- ── ARISTARCHUS FIGURE (CORRECTED) ── -->
+<!--
+  UMBRA CONE GEOMETRY (all px, viewBox 600×250):
+
+  Sun (large, off-screen left): centre (−20, 125), radius 70  [partially visible]
+  Earth: centre (185, 125), radius 28
+  Umbra apex: at distance d = R_e · D_sun / (R_sun − R_e)
+    With R_sun=70, R_e=28, D_sun=205 → d = 28·205/42 = 136.7 → apex at (322, 125)
+  
+  Umbra boundary rays (from apex to Earth edges, extended left toward Sun):
+    Upper: apex (322,125) → Earth top (185, 97): direction (−137,−28)
+      unit = (−0.9797, −0.2000) [approx; exact: len=√(137²+28²)=139.82]
+      unit = (−137/139.82, −28/139.82) = (−0.9799, −0.2003)
+      Extended left: at x=0, t=(322/137)=2.350, y=125−28·2.350=125−65.8=59.2 → (0,59)
+    Lower: apex (322,125) → Earth bottom (185,153): direction (−137,+28)
+      At x=0: y=125+65.8=190.8 → (0,191)
+  
+  Shadow region: triangle with apex at (322,125), left boundary from (0,59) to (0,191).
+  
+  Moon: centre (252,125), radius 9px  [clearly inside cone]
+    Shadow half-width at x=252: t=(322−252)/137=0.511, hw=28·0.511=14.3px
+    Moon (r=9) comfortably inside (14.3 > 9). ✓
+  
+  R_earth label: vertical bar from (185,125) to (185,97), labeled R⊕
+  d label: horizontal arrow from Earth (185,125) to Moon (252,125)
+  Cone half-angle β at apex: arc between upper and lower rays, label β
+  Shadow width at Moon: bracket at x=263
+    t=(322−263)/137=0.431, hw=28×0.431=12.1 → top=112.9, bot=137.1
+-->
+<figure class="greek-figure" id="fig-aristarchus">
+<svg width="100%" viewBox="0 0 600 270" xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-labelledby="aris-title aris-desc">
+  <title id="aris-title">Aristarchus' method for measuring the Moon's distance</title>
+  <desc id="aris-desc">Sun at far left. Earth in the centre casts a conical shadow (umbra) tapering to an apex at right. The Moon is shown as a small circle clearly inside the shadow cone. Cone geometry labels show Earth radius R, Moon distance d, and shadow width at the Moon's position.</desc>
+
+  <!-- ── Umbra shadow region (filled triangle) ── -->
+  <!-- Vertices: apex (322,125), upper-left at Earth edge extends to (0,59), lower-left to (0,191) -->
+  <!-- But we only fill from Earth to apex, not the full way to x=0 -->
+  <!-- Fill from Earth surface to apex -->
+  <polygon points="185,97  322,125  185,153" fill="#c0bbb0" opacity="0.45"/>
+
+  <!-- ── Sun (partial circle, left) ── -->
+  <circle cx="-20" cy="125" r="70" fill="#f5e060" opacity="0.55"/>
+  <text x="20" y="129" font-family="sans-serif" font-size="11" fill="#c89010" font-weight="600">Sun</text>
+
+  <!-- ── Umbra boundary rays ── -->
+  <!-- Upper boundary: from (0,59) through Earth top (185,97) to apex (322,125) -->
+  <line x1="0"   y1="59"  x2="322" y2="125" stroke="#9a8a70" stroke-width="1.3" stroke-dasharray="5,3"/>
+  <!-- Lower boundary: from (0,191) through Earth bottom (185,153) to apex (322,125) -->
+  <line x1="0"   y1="191" x2="322" y2="125" stroke="#9a8a70" stroke-width="1.3" stroke-dasharray="5,3"/>
+
+  <!-- ── Solid boundary lines from Earth to apex (the visible cone) ── -->
+  <line x1="185" y1="97"  x2="322" y2="125" stroke="#4a4845" stroke-width="1.6"/>
+  <line x1="185" y1="153" x2="322" y2="125" stroke="#4a4845" stroke-width="1.6"/>
+
+  <!-- ── Earth ── -->
+  <circle cx="185" cy="125" r="28" fill="#3a7acc" opacity="0.9"/>
+  <text x="185" y="129" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="white" font-style="italic">Earth</text>
+
+  <!-- ── Earth radius label ── -->
+  <!-- Vertical tick from Earth centre to Earth top edge -->
+  <line x1="185" y1="125" x2="185" y2="97" stroke="white" stroke-width="1.2"/>
+  <text x="172" y="113" font-family="Georgia,serif" font-size="12" fill="white" font-style="italic">R</text>
+
+  <!-- ── Apex point ── -->
+  <circle cx="322" cy="125" r="3.5" fill="#4a4845"/>
+  <text x="326" y="119" font-family="sans-serif" font-size="10" fill="#4a4845">apex</text>
+
+  <!-- ── Cross-section radius bracket at Earth's edge (ρ = R⊕ here, x = 0) ── -->
+  <!-- This anchors the similar-triangle relation: ρ shrinks linearly from R⊕ at Earth
+       to 0 at the apex. We show two cross-sections: one at Earth's surface plane (ρ=R⊕)
+       and one at the Moon's position (ρ <R⊕), to make the linear shrink visible. -->
+  <line x1="190" y1="97" x2="190" y2="153" stroke="#4a7a55" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>
+
+  <!-- ── Moon (inside the cone) ── -->
+  <!-- Moon centre: (252, 125), radius 9 -->
+  <!-- Shadow half-width at x=252: t=(322−252)/137=0.511, hw=28×0.511=14.3 → ±14.3 from axis -->
+  <!-- Moon (r=9) comfortably fits inside (14.3 > 9) ✓ -->
+  <circle cx="252" cy="125" r="9" fill="#d8d0c0" stroke="#9a9080" stroke-width="1.2"/>
+  <text x="252" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a4845">Moon</text>
+
+  <!-- Moon path (dotted line showing Moon's trajectory through shadow) -->
+  <line x1="215" y1="125" x2="290" y2="125" stroke="#4a4845" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+  <!-- ── Shadow width at Moon's position ──
+       At x=263 (just to the right of Moon):
+       t=(322−263)/137=0.431, hw=28×0.431=12.1 → top=112.9, bot=137.1
+  -->
+  <line x1="268" y1="112.9" x2="268" y2="137.1" stroke="#b85c1a" stroke-width="1.5"/>
+  <line x1="263" y1="112.9" x2="273" y2="112.9" stroke="#b85c1a" stroke-width="1.2"/>
+  <line x1="263" y1="137.1" x2="273" y2="137.1" stroke="#b85c1a" stroke-width="1.2"/>
+  <text x="275" y="121" font-family="sans-serif" font-size="9" fill="#b85c1a">ρ (shadow</text>
+  <text x="275" y="133" font-family="sans-serif" font-size="9" fill="#b85c1a">radius)</text>
+
+  <!-- ── Distance label: Earth centre to Moon centre (d) ── -->
+  <line x1="185" y1="197" x2="252" y2="197" stroke="#1a5fa8" stroke-width="1.2"/>
+  <polygon points="252,197 246,194 246,200" fill="#1a5fa8"/>
+  <polygon points="185,197 191,194 191,200" fill="#1a5fa8"/>
+  <text x="218" y="211" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1a5fa8" font-style="italic">d  (Moon's distance — unknown)</text>
+
+  <!-- ── Distance label: Earth centre to apex (D) ── -->
+  <line x1="185" y1="225" x2="322" y2="225" stroke="#9a8a70" stroke-width="1.1"/>
+  <polygon points="322,225 316,222 316,228" fill="#9a8a70"/>
+  <polygon points="185,225 191,222 191,228" fill="#9a8a70"/>
+  <text x="253" y="239" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#9a8a70" font-style="italic">D  (Earth to shadow apex)</text>
+
+  <!-- ── Similar-triangles relation label ── -->
+  <text x="340" y="80" font-family="Georgia,serif" font-size="11" fill="#b85c1a">ρ = R(1 − d/D)</text>
+  <text x="340" y="96" font-family="sans-serif" font-size="9" fill="#7a7874">(shadow radius shrinks</text>
+  <text x="340" y="108" font-family="sans-serif" font-size="9" fill="#7a7874">linearly toward the apex)</text>
+  <!-- Connector to shadow-width bracket -->
+  <line x1="337" y1="100" x2="270" y2="118" stroke="#b85c1a" stroke-width="0.7" stroke-dasharray="3,2"/>
+
+  <!-- ── Umbra label inside shadow ── -->
+  <text x="220" y="117" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#7a7874" font-style="italic">umbra</text>
+
+  <!-- ── Sun rays (for context) ── -->
+  <!-- Upper ray from Sun top through Earth top: (−20, 55) → (185, 97) extended further -->
+  <!-- slope = (97−55)/(185−(−20)) = 42/205 = 0.2049 -->
+  <!-- This is the penumbra boundary, shown lightly -->
+  <!-- At x=−20: y=55; at x=600: y=55+0.2049×620=182 -->
+  <line x1="-20" y1="55"  x2="185" y2="97"  stroke="#f0c040" stroke-width="1" opacity="0.5"/>
+  <line x1="-20" y1="195" x2="185" y2="153" stroke="#f0c040" stroke-width="1" opacity="0.5"/>
+
+  <!-- Title annotation -->
+  <text x="450" y="170" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a4845" font-style="italic">
+    Earth's shadow: a physical cone
+  </text>
+  <text x="450" y="184" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a4845" font-style="italic">
+    Moon crosses inside it during an eclipse
+  </text>
+</svg>
+<figcaption id="aris-caption">
+  Aristarchus' method (≈ 270 BC). During a lunar eclipse, the Moon's crossing time through the umbra reveals the shadow's diameter at the Moon's distance, which Aristarchus compared with the Moon's own apparent diameter. 
+</figcaption>
+</figure>
+
+<p>
+Aristarchus pioneered this geometric approach using eclipse timings. His method yielded Moon's distance of  an estimate 60 Earth-radii. The modern value is 60.3. He was within roughly 0.5% of the correct answer, measuring from the ground, more than two millennia ago, using a cone he could never see but whose geometry he could reason about exactly. 
+</p>
+
+<div class="pull">
+  <p>
+    The Earth's shadow is a cone. The Moon's path through it is a chord across that cone's cross-section. 
+          Aristarchus read the Moon's distance from the shadow of the Earth — recovering a hidden quantity 
+          from accessible measurements through the geometry of a cone. 
+  </p>
+</div>
+
+<div class="aha">
+  <div class="aha-label">The recurring pattern</div>
+  <p>
+    In every case we have seen — the paper disc, the visual cone, 
+    Eratosthenes' shadow, Aristarchus' eclipse — a hidden quantity is recovered 
+    from accessible measurements through a known geometric relationship. 
+    The cone is not merely a shape. It is a <em>template for inference</em>: 
+    a way of using what you can see to find what you cannot.
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  SECTION V: OTHER DIRECTIONS                           -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2>V. Other Directions Worth Following</h2>
+
+<p>
+The paper cone I made that evening turned out to be a single entry point into a much 
+larger landscape. A few threads worth pulling, for anyone who wants to keep going 
+past where this essay stops.
+</p>
+
+<h3>Conic sections</h3>
+
+<p>
+We built a cone and asked what it looks like unrolled. The classical question runs 
+the other way: what curve do you get when you <em>slice</em> a cone with a plane? 
+Depending on the angle of the cut, the answer is a circle, an ellipse, a parabola, 
+or a hyperbola — the four conic sections, studied systematically by Apollonius of 
+Perga<a href="#ref-4" class="cite-ref">[4]</a> two thousand years before they turned 
+out to also describe planetary orbits, the path of a thrown ball, and the focusing 
+surface of a satellite dish. The cone is generous twice over: once in how it unrolls, 
+and once in how it slices.
+</p>
+
+<p>
+A puzzle to sit with: Take a cone and cut it with a plane that does not pass through the apex, 
+at some angle to the base. The boundary of the cut is an ellipse sitting tilted in space. Now ask: 
+where, inside that cone, do you have to place a sphere so that it touches the cone's 
+slant surface all the way around in a circle, and just touches the cutting plane at a 
+single point? The two such spheres (one on each side of the cutting plane) touch the 
+ellipse at its two foci — the same foci you'd mark with two pins and a loop of string 
+if you were drawing the ellipse directly. It is a satisfying exercise to work out why, 
+and it is exactly the kind of thing the paper cone on your desk is sturdy enough to help you see.
+</p>
+
+
+<h3>Other hidden cones</h3>
+
+<p>
+Once you start looking, cones of inference show up well beyond shadows and eclipses. 
+A camera's field of view is a cone, and so is a flashlight's beam, a loudspeaker's 
+sound dispersion, and the spray pattern of a nozzle — in every case, a hidden quantity 
+(distance, intensity, coverage) is recoverable from an angle and a known relationship, 
+the same template this essay has been tracing. 
+</p>
+
+
+
+<p>
+Even more striking is the <em>Mach cone</em>. An object moving faster than sound drags a conical shock wave whose half-angle <span class="mi">α</span> satisfies 
+<span class="num">sin α</span>= <span class="frac"><span class="num">v<sub>sound</sub></span><span class="den">v<sub>object</sub></span></span>. 
+A single Schlieren photograph of the cone (or the vapour cone around a supersonic aircraft) immediately reveals the object’s speed — another elegant instance of an angle standing in for a quantity we cannot measure directly.
+</p>
+
+<h3>Cones already built that way</h3>
+
+<p>
+Many cones in nature and engineering are not accidental — they are deliberately or evolutionarily shaped for a clear purpose. Conifer trees (such as pines and firs) have cone-shaped canopies that help them shed snow easily, resist strong winds, and allow sunlight to reach the lower branches. Young coast redwoods — the tallest trees in the world — show this conical form most beautifully.
+</p>
+
+<p>
+A fountain pen nib tapers conically to concentrate pressure at the tip and draw ink smoothly by capillary action. Rocket nose cones are shaped this way to reduce air resistance at high speeds. A sharper angle cuts through the air more efficiently, though engineers must balance it with the need for strength and payload space.
+</p>
+
+
+
+
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  SECTION VI: WHAT THIS MEANS FOR TEACHING              -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2>VI. What This Means for Teaching</h2>
+
+<p>
+I want to end where I began — at the study desk the evening before class.
+</p>
+
+<p>
+The discoveries I made with that paper disc were not new mathematics. Every one of them was already known. What was new was the quiet sequence of surprise — each one arriving as the answer to a question I was already holding in my mind.
+</p>
+
+<p>
+That sequence is teachable. Not the specific discoveries — different students will find different things. But the posture is teachable: picking up the object, refusing to accept a formula until you feel why it must be true, and following each surprise wherever it leads.
+</p>
+
+<p>
+The cone does not reveal all its secrets at once. It rewards patience and attention. First it shows you a formula (the paper, the sector, the area). Then it shows you a hidden angle (recoverable from the surface). Then it shows you an invisible cone of sight. And if you keep following the thread, it quietly takes you from your desk to the Moon, to the stars, and to the edge of spacetime.
+</p>
+
+<p>
+The visible cone becomes the invisible cone. And the invisible cone, it turns out, is more powerful and structurally important than anything you can hold in your hands.
+</p>
+
+<div class="aha">
+  <div class="aha-label">FINAL THOUGHT</div>
+  <p>
+    The teacher who finds a way to lead students from the visible to the invisible is teaching geometry in its deepest sense — not as a collection of formulas, but as a language in which the universe writes about itself.
+  </p>
+
+  <p>
+    Mathematics is not confined to mental exercise or the play of symbols. It can be felt in the heart — and that feeling is often what carries the mind toward its most wonderful mathemtics.
+  </p>
+</div>
+
+<div class="divider"><span>∎</span></div>
+
+
+<!-- ── NOTES ── -->
+<div class="footnotes">
+  <h2>Notes</h2>
+  <ol>
+    <li id="fn-1" class="fn-anchor">
+      <span class="footnote-marker">*</span>
+      Eratosthenes' own book on the subject, <em>On the Measurement of the Earth</em>, has not survived. 
+      The account handed down to us — the one told here — comes from a later summary by the astronomer 
+      Cleomedes<a href="#ref-1" class="cite-ref">[1]</a>, writing a few centuries afterward as part of a 
+      much broader survey of Stoic astronomy.
+      <a href="#fnref-1" class="footnote-back" aria-label="Back to text">↩</a>
+    </li>
+    <li id="fn-2" class="fn-anchor">
+      <span class="footnote-marker">†</span>
+      The 800 km was not his to measure, though — it came from the Ptolemaic state's own bematists, 
+      professional pacers who had already walked off the distance between Alexandria and Syene 
+      by counting steps, for administrative reasons that had nothing to do with him<a href="#ref-2" class="cite-ref">[2]</a>. 
+      Eratosthenes supplied the angle; Egypt's record-keepers had already supplied the baseline.
+      <a href="#fnref-2" class="footnote-back" aria-label="Back to text">↩</a>
+    </li>
+  </ol>
+</div>
+
+<!-- ── REFERENCES ── -->
+<div class="references">
+  <h2>References</h2>
+  <ol>
+    <li id="ref-1">
+      Cleomedes. <em>The Heavens</em> (<em>Caelestia</em>, also known as <em>On the Circular 
+      Motions of the Celestial Bodies</em>), Book I, §7. Translated by A. C. Bowen and R. B. Todd 
+      as <em>Cleomedes' Lectures on Astronomy: A Translation of The Heavens</em>. 
+      University of California Press, Berkeley, 2004. 
+      (Primary surviving source for Eratosthenes' measurement.)
+    </li>
+    <li id="ref-2">
+      Walkup, N. "Eratosthenes and the Mystery of the Stades." <em>Convergence</em>, 
+      Mathematical Association of America, August 2010. 
+      (On the bematists and the disputed origin of the Alexandria–Syene distance.)
+    </li>
+    <li id="ref-3">
+      Aristarchus of Samos. <em>On the Sizes and Distances of the Sun and Moon</em>. 
+      In: Heath, T. L., <em>Aristarchus of Samos: The Ancient Copernicus</em>. 
+      Clarendon Press, Oxford, 1913.
+    </li>
+    <li id="ref-4">
+      Apollonius of Perga. <em>Conics</em>, Books I–III. Translated by R. Catesby Taliaferro, 
+      with an introduction by Harvey Flaumenhaft. Green Lion Press, Santa Fe, 1998. 
+      (Original: ≈ 200 BC. Book IV survives separately, translated by Michael N. Fried.)
+    </li>
+  </ol>
+</div>
+
+
+
+<div class="author-bio">
+  <div class="author-bio-initial">D</div>
+  <div>
+    <div class="author-bio-label">About the Author</div>
+    <p>
+      <strong>Dinesh Kumar</strong> is a faculty member in the Area of Mathematics & Basic Sciences at NIIT University, Neemrana, Rajasthan. 
+      He is working at the intersection of networked dynamical systems, spectral graph theory, and mathematical biology, with research extending into 
+      reaction–diffusion systems and bioeconomic optimal control. He is equally passionate about   the history of science and mathematics, and about making 
+              abstract  ideas visible and discoverable for students. His teaching is built around a "necessity-first" philosophy — formal definitions arrive only 
+     after a student has felt the need for them.  He holds a PhD from IIT Guwahati and completed postdoctoral research at IISc Bengaluru, 
+      and has taught mathematics at IIT Guwahati, NIT Jalandhar, BML Munjal University, IISc, and NIIT University. 
+    </p>
+  </div>
+</div>
+
+
+
+</div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© 2026 Dinesh Kumar</span>
+    <span>Mathematics · Pedagogy · Cosmos</span>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('progress');
+    const h = document.documentElement;
+    const pct = (h.scrollTop || document.body.scrollTop) /
+                (h.scrollHeight - h.clientHeight) * 100;
+    el.style.width = Math.min(100, pct) + '%';
+  });
+</script>
+
+</body>
+</html>
