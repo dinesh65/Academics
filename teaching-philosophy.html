@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching Philosophy — Dinesh Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #1a1a2e;
+    --ink-mid:    #3d3d5c;
+    --ink-light:  #7a7a9d;
+    --rule:       #d8d8e8;
+    --accent:     #4a6fa5;
+    --accent-dim: #e8eef6;
+    --highlight:  #f0ece2;
+    --bg:         #fafaf7;
+    --white:      #ffffff;
+    --mono:       'JetBrains Mono', monospace;
+    --serif:      'Lora', Georgia, serif;
+    --sans:       'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 2.8rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  header h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+  .header-name {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-family: var(--sans);
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── PULL QUOTE / PRINCIPLE BOX ── */
+  .principle {
+    background: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    margin: 2.5rem 0;
+    padding: 1.4rem 1.6rem;
+    border-radius: 0 6px 6px 0;
+  }
+  .principle p {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 3rem 0 0;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.1rem;
+  }
+  .section h2 {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .section p {
+    color: var(--ink-mid);
+    margin-bottom: 1rem;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* ── EXAMPLE CALLOUT ── */
+  .example {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.5rem 1.6rem;
+    margin: 1.8rem 0;
+  }
+  .example-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--highlight);
+    color: var(--ink-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    margin-bottom: 0.8rem;
+  }
+  .example p {
+    font-size: 0.96rem;
+    color: var(--ink-mid);
+    margin-bottom: 0.75rem;
+  }
+  .example p:last-child { margin-bottom: 0; }
+
+  /* ── MATH INLINE ── */
+  .math {
+    font-family: var(--mono);
+    font-size: 0.88em;
+    background: var(--highlight);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* ── DIVIDER ── */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.8rem 0 0;
+  }
+
+  /* ── EXPERIENCE GRID ── */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.4rem;
+  }
+  @media (max-width: 560px) { .exp-grid { grid-template-columns: 1fr; } }
+  .exp-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+    padding: 1.1rem 1.2rem;
+  }
+  .exp-card .inst {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .exp-card .role {
+    font-size: 0.83rem;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  /* ── COURSES LIST ── */
+  .courses {
+    margin-top: 1.2rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+  }
+  .courses-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.7rem;
+  }
+  .courses ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .courses li {
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 4rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    font-family: var(--sans);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .section { opacity: 0; transform: translateY(18px); animation: rise 0.5s ease forwards; }
+    .section:nth-child(1) { animation-delay: 0.05s; }
+    .section:nth-child(2) { animation-delay: 0.13s; }
+    .section:nth-child(3) { animation-delay: 0.21s; }
+    .section:nth-child(4) { animation-delay: 0.29s; }
+    .section:nth-child(5) { animation-delay: 0.37s; }
+    .section:nth-child(6) { animation-delay: 0.45s; }
+    .section:nth-child(7) { animation-delay: 0.53s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Teaching Philosophy</h1>
+  <p class="header-name">Dinesh Kumar</p>
+</header>
+
+<main class="container">
+
+  <!-- CORE PRINCIPLE -->
+  <div class="section">
+    <div class="principle">
+      <p>Mathematics is most meaningful when students experience a need for an idea before they are given its definition. Before a concept is named, students should feel its necessity.</p>
+    </div>
+    <p>I design lectures so that definitions emerge as answers to questions students have already begun asking for themselves. Every session carries a visible roadmap so that students always know where they stand in the larger argument, and worked examples are chosen not for their simplicity but for what they reveal.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- PHILOSOPHY 1 + EXAMPLE -->
+  <div class="section">
+    <div class="section-label">The Necessity Principle</div>
+    <h2>Definitions as answers, not starting points</h2>
+    <p>I design lectures so that formal definitions arrive only after students feel the need for them. During the Algebra &amp; Differential Equations course, when we arrived at <span class="math">x′ = Ax</span>, I did not define eigenvalues or eigenvectors. I asked: <em>what would have to be true of A for this system to be easy?</em></p>
+
+    <div class="example">
+      <span class="example-tag">Classroom sequence · Linear systems</span>
+      <p>Students discover they want A to be diagonal — a diagonal system decouples into scalar equations they already know how to solve.</p>
+      <p>When A is arbitrary, the next question follows naturally: can we transform A into a diagonal matrix? This forces attention to what matrix multiplication actually does to vectors — most vectors come out pointing in a different direction entirely.</p>
+      <p>But some special vectors come out pointing exactly as they went in, only scaled. These are precisely the vectors that would let us build the transformation we were already looking for. The equation <span class="math">λv = Av</span> is not introduced. It is the students' own answer to their own question.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- PHILOSOPHY 2 + EXAMPLE -->
+  <div class="section">
+    <div class="section-label">Surprise as Pedagogy</div>
+    <h2>Let the limitation appear before the remedy</h2>
+    <p>Lectures are built around carefully chosen problems that draw students into difficulty before offering a resolution. The goal is to make a limitation visible first, so that the remedy — when it comes — feels like the only natural response.</p>
+
+    <div class="example">
+      <span class="example-tag">Classroom sequence · Gradient descent</span>
+      <p>Rather than opening with <span class="math">x<sub>k+1</sub> = x<sub>k</sub> − α∇f(x<sub>k</sub>)</span>, I begin by placing students at a point on the contour plot of f and asking: <em>which direction loses height fastest?</em> Most instinctively point toward the origin.</p>
+      <p>Computing the directional derivative reveals that the steepest descent direction is <span class="math">−∇f(x)</span> — which does not point toward the origin. This surprise is the lesson: on an elliptical landscape, the gradient is distorted by the function's differential sensitivity in each direction.</p>
+      <p>Students simulate two or three steps by hand and watch the famous zigzag emerge on their own sketch, long before it is named a convergence pathology. Only then is Newton's method introduced — using the Hessian to account for curvature — not as another formula to memorise but as a response to a limitation they have already encountered.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- PHILOSOPHY 3 + EXAMPLE -->
+  <div class="section">
+    <div class="section-label">Revisiting the Familiar</div>
+    <h2>Geometry over procedure</h2>
+    <p>Some of my most rewarding moments have come from revisiting familiar concepts through fresh eyes. When a geometric view of a problem is available, I prefer it to a computational one — it produces understanding that outlasts the course.</p>
+
+    <div class="example">
+      <span class="example-tag">Classroom sequence · Linear regression</span>
+      <p>While teaching Numerical Methods for Data Science, I approached least-squares geometrically. Students who viewed regression as a collection of formulas began to see it as a projection problem with a clear geometric interpretation.</p>
+      <p>The overdetermined system <span class="math">Xβ ≈ y</span> is inconsistent. By centering the input data we obtain <span class="math">Z = X − X̄</span>, yielding a design matrix <span class="math">[Z 1]</span> whose columns are orthogonal. Column-normalisation gives an orthonormal matrix Q, so <span class="math">QQ<sup>T</sup></span> is the orthogonal projection onto the column space. Projecting y reduces the problem to a diagonal system — slope and intercept decouple entirely, each independently and explicitly readable.</p>
+      <p>A standard algorithm, re-derived through geometry rather than formula. The derivation created a deeply engaging class discussion and helped students develop intuition that complements formal reasoning.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- BROADER COMMITMENTS -->
+  <div class="section">
+    <div class="section-label">Broader Commitments</div>
+    <h2>Principles that run across every course</h2>
+    <p>I try to help students see mathematics as a living human enterprise rather than a finished collection of results. Whenever possible, I discuss the questions, obstacles, and practical needs that motivated mathematical ideas. Understanding why a concept was created often helps students remember not only the result but the problem it was designed to solve.</p>
+    <p>I occasionally introduce topics beyond the formal syllabus when they serve the larger goal of discovery. In the optimisation course, for example, I begin with the interval-halving method before discussing more advanced algorithms — the idea is accessible enough that students can often reconstruct it from first principles. They experience what it means to build a method in response to a problem, rather than viewing mathematics as a collection of procedures handed down by authority.</p>
+    <p>To support learning outside the classroom: detailed LaTeX notes, quizzes that reward reflection over rapid recall, Python computational experiments, and Desmos visualisations whenever they genuinely illuminate a concept. My philosophy applies equally to advanced and remedial courses. The goal is not to lower standards but to make the path toward understanding visible.</p>
+    <p>I also regard accessibility outside the classroom as essential. Meaningful learning often occurs during office-hour conversations, or moments when a student feels comfortable enough to admit confusion. Creating an environment in which questions are welcomed is as important as delivering a well-structured lecture.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- BEYOND CLASSROOM -->
+  <div class="section">
+    <div class="section-label">Beyond the Classroom</div>
+    <h2>Pedagogical writing</h2>
+    <p>This conviction has led me beyond lectures. I am currently developing a manuscript on introducing complex differentiability through historical narrative and student-felt necessity — an approach I believe has broader implications for how analysis is taught at the undergraduate level.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-label">Teaching Experience</div>
+    <h2>Institutions and courses</h2>
+    <p>My teaching spans doctoral tutorials, undergraduate and postgraduate courses across five institutions, and M.Tech. thesis supervision.</p>
+
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="inst">IIT Guwahati</div>
+        <div class="role">Weekly tutorials for all three core B.Tech mathematics courses during doctoral work</div>
+      </div>
+      <div class="exp-card">
+        <div class="inst">IISc Bengaluru</div>
+        <div class="role">Supervision of two M.Tech. students through thesis work</div>
+      </div>
+      <div class="exp-card">
+        <div class="inst">NIT Jalandhar</div>
+        <div class="role">Undergraduate mathematics courses</div>
+      </div>
+      <div class="exp-card">
+        <div class="inst">BML Munjal University</div>
+        <div class="role">Core and elective mathematics for B.Tech students</div>
+      </div>
+      <div class="exp-card">
+        <div class="inst">NIIT University, Neemrana</div>
+        <div class="role">Mathematics courses including MAT 101 and Numerical Methods for Data Science</div>
+      </div>
+    </div>
+
+    <div class="courses">
+      <div class="courses-label">Courses taught</div>
+      <ul>
+        <li>Linear Algebra &amp; Differential Equations</li>
+        <li>Calculus</li>
+        <li>Functions of Complex Variables</li>
+        <li>Integral Transforms</li>
+        <li>Topology &amp; Measure Theory</li>
+        <li>Functional Analysis</li>
+        <li>Numerical Methods for Data Science</li>
+        <li>Optimisation</li>
+        <li>Calculus of Variations</li>
+        <li>Probability &amp; Statistics</li>
+        <li>Core Mathematics (B.Tech)</li>
+        <li>Remedial Mathematics</li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Dinesh Kumar &nbsp;·&nbsp; Teaching Philosophy &nbsp;·&nbsp; Applied Mathematics
+</footer>
+
+</body>
+</html>
