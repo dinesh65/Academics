@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Statement — Dinesh Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #1a1a2e;
+    --ink-mid:    #3d3d5c;
+    --ink-light:  #7a7a9d;
+    --rule:       #d8d8e8;
+    --accent:     #4a6fa5;
+    --accent-dim: #e8eef6;
+    --highlight:  #f0ece2;
+    --bg:         #fafaf7;
+    --white:      #ffffff;
+    --mono:       'JetBrains Mono', monospace;
+    --serif:      'Lora', Georgia, serif;
+    --sans:       'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 2.8rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  header h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+  .header-name {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-family: var(--sans);
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── PULL QUOTE ── */
+  .principle {
+    background: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    margin: 2.5rem 0;
+    padding: 1.4rem 1.6rem;
+    border-radius: 0 6px 6px 0;
+  }
+  .principle p {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 3rem 0 0;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.1rem;
+  }
+  .section h2 {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .section p {
+    color: var(--ink-mid);
+    margin-bottom: 1rem;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* ── RESULT CALLOUT ── */
+  .result {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.5rem 1.6rem;
+    margin: 1.8rem 0;
+  }
+  .result-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--highlight);
+    color: var(--ink-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    margin-bottom: 0.8rem;
+  }
+  .result p {
+    font-size: 0.96rem;
+    color: var(--ink-mid);
+    margin-bottom: 0.75rem;
+  }
+  .result p:last-child { margin-bottom: 0; }
+
+  /* ── OPEN PROBLEMS LIST ── */
+  .problem-list {
+    list-style: none;
+    margin-top: 1.4rem;
+  }
+  .problem-list li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+    align-items: start;
+  }
+  .problem-num {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    padding-top: 0.25rem;
+  }
+  .problem-body strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .problem-body p {
+    font-size: 0.93rem;
+    color: var(--ink-mid);
+    margin: 0;
+  }
+
+  /* ── MATH INLINE ── */
+  .math {
+    font-family: var(--mono);
+    font-size: 0.88em;
+    background: var(--highlight);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* ── DIVIDER ── */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.8rem 0 0;
+  }
+
+  /* ── REFERENCES ── */
+  .references ol {
+    list-style: none;
+    margin-top: 1.2rem;
+    padding: 0;
+  }
+  .references ol li {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    align-items: baseline;
+  }
+  .ref-num {
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .ref-body {
+    flex: 1;
+  }
+  .references ol li em {
+    font-style: italic;
+    color: var(--ink);
+  }
+  .ref-status {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 0.1rem 0.45rem;
+    border-radius: 3px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 4rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    font-family: var(--sans);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .section { opacity: 0; transform: translateY(18px); animation: rise 0.5s ease forwards; }
+    .section:nth-child(1) { animation-delay: 0.05s; }
+    .section:nth-child(2) { animation-delay: 0.12s; }
+    .section:nth-child(3) { animation-delay: 0.19s; }
+    .section:nth-child(4) { animation-delay: 0.26s; }
+    .section:nth-child(5) { animation-delay: 0.33s; }
+    .section:nth-child(6) { animation-delay: 0.40s; }
+    .section:nth-child(7) { animation-delay: 0.47s; }
+    .section:nth-child(8) { animation-delay: 0.54s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Research Statement</h1>
+  <p class="header-name">Dinesh Kumar</p>
+</header>
+
+<main class="container">
+
+  <!-- 1. CENTRAL QUESTION -->
+  <div class="section">
+    <div class="section-label">1 · The Central Question</div>
+    <h2>Where is the boundary between persistence and collapse?</h2>
+
+    <div class="principle">
+      <p>Consider a landscape broken apart — by roads, dams, or the slow creep of agricultural fields into forests. The animal populations that once moved freely between habitat patches are now confined to fragments, connected only by narrow corridors. Will they survive?</p>
+    </div>
+
+    <p>And if a corridor must be removed — for a road alignment, a development project, a necessary human intervention — which removal is least harmful? Can mathematics tell us not merely that connectivity matters, but precisely how much connectivity is needed, and where the boundary between persistence and collapse lies?</p>
+    <p>This central question has guided much of my research programme, particularly since my postdoctoral work at IISc Bengaluru under NBHM and Dr. D.S. Kothari fellowships, and continues to shape my ongoing independent research. It builds upon my doctoral training at IIT Guwahati, where I investigated predator–prey dynamics with additional food supply to predators using dynamical systems, bifurcation theory, and optimal control. Over the years, I have developed a cohesive research programme that integrates dynamical systems theory, spectral graph theory, and mathematical ecology. What began with ecological modelling has evolved into a broader mathematical programme on the interplay between network structure and dynamical behaviour — with relevance to power grid stability, gene regulatory networks, epidemic control, and optimal resource management.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- 2. COMPLETED WORK -->
+  <div class="section">
+    <div class="section-label">2 · Completed Work</div>
+    <h2>Stability-aware partitioning of metapopulation networks</h2>
+
+    <p>A metapopulation is a collection of local populations, each living in its own patch of habitat, exchanging individuals through dispersal. The standard mathematical model is a reaction-diffusion system on a graph: each node carries its own local ecological dynamics (the "reaction"), while individuals diffuse along the edges (the "diffusion"). The central stability question is: under what conditions does the whole network settle to a viable equilibrium, and what happens to stability when the network is cut?</p>
+
+    <div class="result">
+      <span class="result-tag">ProcRoySocA 2019 · with J. Gupta &amp; S. Raha</span>
+      <p>The key insight was to connect equilibrium stability of the metapopulation network with the algebraic connectivity — the <strong>Fiedler value</strong> — of the underlying graph Laplacian. Networks with higher algebraic connectivity are more robustly stable; cuts that reduce algebraic connectivity risk destabilising the populations that depend on them.</p>
+      <p>From this I developed a Fiedler-value-maximising heuristic algorithm for graph partitioning that, unlike classical graph bisection algorithms (which minimise the number of cut edges), seeks cuts that preserve stability in both daughter sub-networks. The algorithm is randomised, parallelisable, and applicable to static graph partitioning problems generally.</p>
+    </div>
+
+    <div class="result">
+      <span class="result-tag">Ecological Complexity 2021 · with A. Abhishek &amp; S. Raha</span>
+      <p>A family of results that allow one to certify or rule out stability-preserving cuts directly from local graph properties, without solving the full eigenvalue problem. For a given proposed partition, one can check necessary conditions on internal edge costs and external costs against the Fiedler value with modest computation.</p>
+      <p>Together, the two papers established a new framework — <em>stability-aware graph partitioning</em> — that did not previously exist in the literature.</p>
+    </div>
+
+    <div class="result">
+      <span class="result-tag">Theoretical Population Biology 2023 · with R. Kon</span>
+      <p>In parallel work with Prof. Ryusuke Kon (University of Miyazaki), I studied the stabilisation and destabilisation of networked Rosenzweig–MacArthur predator–prey systems under large dispersal rates on non-regular networks with non-diffusive dispersal. Rather than asking where to cut a network, this work asks how varying dispersal strength shifts the qualitative behaviour of the whole — sometimes stabilising locally unstable patches, sometimes triggering new instabilities.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- 3. RECENT WORK I -->
+  <div class="section">
+    <div class="section-label">3 · Recent Work I</div>
+    <h2>A separation principle for heterogeneous metapopulation networks</h2>
+
+    <p>The stability results in my earlier papers, like most classical multi-patch analyses, relied on an assumption of dispersal loss: individuals are lost during transit between patches, and this mortality provides a stabilising force. In many realistic situations, dispersal is purely conservative — no individuals are lost in transit — and the earlier framework does not apply. This gap motivated the preprint arXiv:2511.18798 (May 2026).</p>
+
+    <div class="result">
+      <span class="result-tag">arXiv:2511.18798 · preprint 2026</span>
+      <p>A sufficient condition for the local asymptotic stability of spatially discrete, continuous-time reaction-diffusion systems at a homogeneous equilibrium, valid for purely conservative dispersal and for networks in which different patches may follow structurally distinct local dynamics. This heterogeneous setting is not covered by the classical bookkeeping reduction of Jansen and Lloyd (2000), which requires identical patch dynamics, nor by the Master Stability Function of Pecora and Carroll (1998), restricted to identical nodes.</p>
+      <p><strong>The separation principle.</strong> Because the zero eigenvalue of the per-species graph Laplacian always corresponds to the constant eigenvector, the zero-mode stability condition reduces to a diagonal dominance condition on the spatially averaged Jacobian. The stability of the entire network is jointly but independently governed by (i) a diagonal dominance criterion on the averaged local dynamics, checkable from model parameters without computing eigenvalues of the full high-dimensional system, and (ii) a lower bound on the algebraic connectivity of the network Laplacian.</p>
+      <p>The paper also contains a striking qualitative observation: individually unstable patches can be stabilised entirely by dispersal connections to neighbours. The paper additionally revisits Jansen and Lloyd's own predator–prey example and shows that a natural reformulation of the dispersal term eliminates the dispersal-driven unstable region entirely — underscoring how sensitive qualitative conclusions can be to modelling choices.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- 4. RECENT WORK II -->
+  <div class="section">
+    <div class="section-label">4 · Recent Work II</div>
+    <h2>Optimal fishery harvesting with marine protected areas</h2>
+
+    <p>My second active line concerns how a fishery should be harvested optimally when the habitat is spatially structured and part of it is protected. This work (arXiv:2601.20563, January 2026) grew from my doctoral interest in optimal control of ecological systems.</p>
+
+    <div class="result">
+      <span class="result-tag">arXiv:2601.20563 · preprint 2026</span>
+      <p>The model is a two-patch system comprising a harvestable zone and a marine protected area (MPA), with population dynamics governed by a hybrid system: continuous-time within-season dynamics (mortality, harvesting, dispersal) coupled with a discrete-time Beverton–Holt reproduction map at the end of each season.</p>
+      <p><strong>Persistence condition.</strong> A necessary and sufficient condition <span class="math">Fr &gt; 1</span> for long-term population persistence, where F encapsulates within-season survival and r is the intrinsic growth rate. Bifurcation analysis shows that the MPA substantially expands the region of parameter space in which the fishery is sustainable — quantifying, in precise mathematical terms, the ecological argument for marine reserves.</p>
+      <p><strong>Optimal control.</strong> The optimal harvesting strategy via Pontryagin's Maximum Principle has a composite Bang–Singular–Bang structure: maximum effort at the beginning and end of the season, with a middle singular arc during which the harvesting rate follows an explicit state-feedback formula derived from the Hamiltonian conditions. The optimality of the singular arc is verified through the Generalised Legendre–Clebsch condition. This is, to my knowledge, one of the few analyses of fishery optimal control in a hybrid continuous-discrete seasonal framework that obtains the singular control explicitly in closed form.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- 5. OPEN PROBLEMS -->
+  <div class="section">
+    <div class="section-label">5 · Directions Not Yet Published</div>
+    <h2>Open problems I am working towards</h2>
+
+    <p>Beyond these completed and submitted works, there are several directions I find compelling and am actively thinking about, though they have not yet reached the stage of publication.</p>
+
+    <ul class="problem-list">
+      <li>
+        <span class="problem-num">P1</span>
+        <div class="problem-body">
+          <strong>Turing instability on heterogeneous networks</strong>
+          <p>The classical Turing mechanism was extended to discrete networks by Nakao and Mikhailov (2010), assuming identical nodes. My separation principle suggests a natural path towards a Turing instability theory for heterogeneous networks: one would ask when the spatially averaged Jacobian satisfies the Turing conditions while the full network does not, or vice versa. Preliminary calculations suggest this is tractable, and the ecological implications — pattern formation in realistic heterogeneous landscapes — would be significant.</p>
+        </div>
+      </li>
+      <li>
+        <span class="problem-num">P2</span>
+        <div class="problem-body">
+          <strong>Geometry of stable network topologies</strong>
+          <p>Given a desired minimum stability level, what is the simplest (fewest edges) or most robust (maximum algebraic connectivity) graph topology that sustains it? A full constructive theory — starting from a desired spectrum of the Laplacian and realising a graph with that spectrum — remains open. There is interesting work on isospectral graph transformations (Bunimovich and Webb, 2012) that I believe can be brought into contact with the ecological stability problem.</p>
+        </div>
+      </li>
+      <li>
+        <span class="problem-num">P3</span>
+        <div class="problem-body">
+          <strong>Partitioning for richer dynamical properties</strong>
+          <p>A natural extension is to ask about partitions that preserve or destroy limit cycle oscillations, or that shift a network across a bifurcation boundary. For power grids, it is not equilibrium stability but the absence of oscillatory instabilities that matters. This connection between graph partitioning and bifurcation theory is, to my knowledge, almost entirely unexplored.</p>
+        </div>
+      </li>
+      <li>
+        <span class="problem-num">P4</span>
+        <div class="problem-body">
+          <strong>Spectral approximation for large networks</strong>
+          <p>For large networks, even computationally lightweight stability conditions require knowledge of the algebraic connectivity, which is itself non-trivial to estimate in practice. There may be scope for probabilistic or spectral approximation methods — drawing on random matrix theory or the theory of graph limits — to give usable stability certificates for very large ecological or infrastructure networks without exact spectral computation. A complementary direction is data-driven approximation: graph neural networks and spectral deep learning architectures, which operate directly on graph Laplacian structure, have shown promise in learning eigenvalue-related properties of large graphs from training data. Training such models on families of ecologically or infrastructurally realistic networks could yield fast, deployable surrogates for algebraic connectivity — bringing machine learning into contact with questions of dynamical stability in a principled way.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="rule">
+
+  <!-- 6. LONG-TERM VISION -->
+  <div class="section">
+    <div class="section-label">6 · Long-Term Vision</div>
+    <h2>A mathematical theory of stability-aware network design</h2>
+
+    <p>My long-term goal is to develop a coherent mathematical theory of stability-aware network design: a body of results and algorithms that can tell a conservation biologist, a power systems engineer, or an epidemiologist not merely whether a given network is stable, but how to modify it — by adding or removing links, adjusting weights, or restructuring topology — to achieve desired dynamical properties.</p>
+    <p>I also believe that mathematics of this kind has an important expository and pedagogical dimension. Part of my ambition is to write accounts of these ideas accessible to graduate students and researchers in ecology, engineering, and applied mathematics — not only to specialists in dynamical systems. The beauty of the subject lies precisely in the fact that the same algebraic quantity — the Fiedler value of a graph Laplacian — appears in questions about metapopulation persistence, power grid robustness, and epidemic spreading. That unity deserves to be clearly written down.</p>
+    <p>I am broadly interested in collaborative work that extends this programme into new domains, and I welcome contact with researchers working on networked dynamical systems in any applied context.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- REFERENCES -->
+  <div class="section references">
+    <div class="section-label">Selected Publications &amp; Preprints</div>
+    <h2>References</h2>
+    <ol>
+      <li>
+        <span class="ref-num">1.</span>
+        <span class="ref-body">D. Kumar, J. Gupta, and S. Raha. Partitioning a reaction-diffusion ecological network for dynamic stability. <em>Proceedings of the Royal Society A</em>, 475, 20180524, 2019.</span>
+      </li>
+      <li>
+        <span class="ref-num">2.</span>
+        <span class="ref-body">D. Kumar, A. Abhishek, and S. Raha. Stability aware spatial cut of metapopulations ecological networks. <em>Ecological Complexity</em>, 47, 100948, 2021.</span>
+      </li>
+      <li>
+        <span class="ref-num">3.</span>
+        <span class="ref-body">R. Kon and D. Kumar. Stability of Rosenzweig–MacArthur models with non-diffusive dispersal on non-regular networks. <em>Theoretical Population Biology</em>, 150: 14–22, 2023.</span>
+      </li>
+      <li>
+        <span class="ref-num">4.</span>
+        <span class="ref-body">D. Kumar and S.P. Chakrabarty. A predator-prey model with additional food supply to predators: Dynamics and application. <em>Computational and Applied Mathematics</em>, 37, 763–784, 2018.</span>
+      </li>
+      <li>
+        <span class="ref-num">5.</span>
+        <span class="ref-body">D. Kumar. On the stability of discrete reaction-diffusion systems of networked dynamical systems. arXiv:2511.18798 [math.DS], 2025 (revised 2026). <span class="ref-status">preprint</span></span>
+      </li>
+      <li>
+        <span class="ref-num">6.</span>
+        <span class="ref-body">D. Kumar. Sustainable and optimal harvesting in a seasonally harvested fishery with a marine protected area: a two-patch model with bang-bang and singular control. arXiv:2601.20563 [math.DS], 2026. <span class="ref-status">preprint</span></span>
+      </li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  Dinesh Kumar &nbsp;·&nbsp; Research Statement &nbsp;·&nbsp; Applied Mathematics
+</footer>
+
+</body>
+</html>
